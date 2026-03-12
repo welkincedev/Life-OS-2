@@ -24,7 +24,7 @@ import {
 // ============================
 // AUTH STATE OBSERVER
 // ============================
-const publicPages = ["index.html", "login.html", ""];
+const publicPages = ["index.html", "landing_backup.html", ""];
 const currentPage = window.location.pathname.split("/").pop();
 
 onAuthStateChanged(auth, (user) => {
@@ -33,7 +33,7 @@ onAuthStateChanged(auth, (user) => {
         console.log("✅ Logged in:", user.displayName || user.email);
 
         // Redirect away from login page
-        if (currentPage === "login.html") {
+        if (currentPage === "index.html" || currentPage === "") {
             window.location.href = "dashboard.html";
             return;
         }
@@ -48,7 +48,7 @@ onAuthStateChanged(auth, (user) => {
     } else {
         // ❌ Not logged in — redirect protected pages to login
         if (!publicPages.includes(currentPage)) {
-            window.location.href = "login.html";
+            window.location.href = "index.html";
             return;
         }
     }
@@ -217,7 +217,7 @@ if (googleBtn) {
 window.lifeosSignOut = async () => {
     try {
         await signOut(auth);
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     } catch (err) {
         console.error("Sign out error:", err);
     }
