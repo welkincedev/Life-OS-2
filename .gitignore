@@ -16,3 +16,8 @@ firestore-debug.log*
 # OS Files
 .DS_Store
 Thumbs.db
+
+#config JS
+
+config.js
+
